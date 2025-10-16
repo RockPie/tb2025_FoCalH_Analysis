@@ -1,5 +1,16 @@
 # Example Analysis Python Project for the FoCal TB 2025
 
+## Prerequisites
+
+- Python 3.8 or higher
+- ROOT with PyROOT bindings (https://root.cern/install/)
+
+To test if ROOT is correctly installed, you can run the following command in command line:
+
+``` bash
+python -c "import ROOT; print(ROOT.gROOT.GetVersion())"
+```
+
 ## Data preparation
 
 The test beam data is stored in the EOS system at CERN. 
@@ -27,6 +38,44 @@ scp <user_name>@lxplus.cern.ch:/eos/experiment/alice/focal/tb2025_Oct_SPS/FoCalH
 ```
 
 Here `<user_name>` is your CERN username and `<target_directory>` is the directory on your local machine where you want to store the file.
+
+## Read root data file
+
+The library `lib/lib/lib_tb2025_data_reader.py` provides some functions to easily read the root data files.
+
+#### Run the example script
+
+You can run the example script `script/101_example_reader.py` to see how to read the root data file and generate the ADC/ToT/ToA waveforms for some example channels.
+
+```bash
+python script/101_example_reader.py -i <path_to_root_data_file>
+```
+
+#### Read root file
+
+```python
+import lib.lib_tb2025_data_reader as tb2025
+
+root_data_file_path = "<path_to_root_file>"
+root_data_file      = ROOT.TFile.Open(root_data_file_path)
+root_data_tree      = root_data_file.Get("data_tree")
+root_data_frame     = tb2025.read_tb2025_data(root_data_tree)
+```
+
+#### Get a specific ADC value
+
+!!! Important
+    The channel indexing in the function `get_adc_value`, `get_tot_value`, and `get_toa_value` is different from the raw data branch indexing.
+
+For example, to get the ADC value of `VLDB+ Board #0`, `Channel 20`, `Machine Gun 5`, at `Event 33`:
+```python
+vldb_index          = 0
+channel_index       = 20
+machine_gun_index   = 5
+event_index         = 33
+root_data_tree.GetEntry(event_index)
+adc_value = tb2025.get_adc_value(root_data_frame, vldb_index, channel_index, machine_gun_index)
+```
 
 ## Root file structure
 
