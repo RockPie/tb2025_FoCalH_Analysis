@@ -28,7 +28,7 @@ def main():
     output_file = args.output
     if not output_file:
         # create in default output file folder dump/<script_name>/
-        output_dir = os.path.join("dump", script_name)
+        output_dir = os.path.join("dump", script_name.replace(".py", ""))
         os.makedirs(output_dir, exist_ok=True)
         # assign output file name the same as input file name but with .root extension
         input_base_name = os.path.basename(args.input)
