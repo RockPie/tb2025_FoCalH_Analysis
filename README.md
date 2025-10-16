@@ -1,5 +1,7 @@
 # Example Analysis Python Project for the FoCal TB 2025
 
+[![CERN ALICE FoCal](https://img.shields.io/badge/CERN%20ALICE-FoCal-blue?logo=cern&logoColor=white)](https://alice-collaboration.web.cern.ch/menu_proj_items/FOCAL) [![NBI – University of Copenhagen](https://img.shields.io/badge/Niels%20Bohr%20Institute-UCPH-darkred?logo=google-scholar&logoColor=white)](https://nbi.ku.dk/english/research/experimental-particle-physics/)
+
 ## Prerequisites
 
 - Python 3.8 or higher
