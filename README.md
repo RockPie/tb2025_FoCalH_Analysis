@@ -64,8 +64,8 @@ root_data_frame     = tb2025.read_tb2025_data(root_data_tree)
 
 #### Get a specific ADC value
 
-!!! Important
-    The channel indexing in the function `get_adc_value`, `get_tot_value`, and `get_toa_value` is different from the raw data branch indexing.
+> [!WARNING]
+> The channel indexing in the function `get_adc_value`, `get_tot_value`, and `get_toa_value` is different from the raw data branch indexing. The raw data branch indexing is including the common-mode and calibration channels (76 channels per H2GCROC). The function indexing is only for the normal channels (72 channels per H2GCROC). Please refer to the H2GCROC datasheet for details.
 
 For example, to get the ADC value of `VLDB+ Board #0`, `Channel 20`, `Machine Gun 5`, at `Event 33`:
 ```python
