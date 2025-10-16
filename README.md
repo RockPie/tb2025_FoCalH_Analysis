@@ -17,6 +17,9 @@ The test beam data is stored in the EOS system at CERN.
 
 #### Raw data files
 
+> [!TIP]
+> It is recommended to use the root data files for analysis. The raw data files are much larger in size and require your own decoding.
+
 The raw data files are in the directory `/eos/experiment/alice/focal/tb2025_Oct_SPS/FoCalH/data/beam`
 
 You can copy the data files with the `scp` command. For example, to copy a single file:
